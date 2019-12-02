@@ -1,4 +1,4 @@
-const calculator = {
+let calculator = {
     displayValue: '0',
     firstOperand: null,
     secondOperandActive: false,
@@ -68,7 +68,16 @@ const performCalculation = {
 
 const btnClearAll = document.querySelector('.all-clear');
 
+const handleAllClear = (clear) => {
 
+    calculator = {
+        displayValue: '0',
+        firstOperand: null,
+        secondOperandActive: false,
+        operator: null,
+    }
+
+}
 
 const inputValue = document.querySelector('.calculator');
 
@@ -91,6 +100,11 @@ const handleButton = (e) => {
 
     if (target.matches('.operator')) {
         inputOperator(target)
+        updateDisplay();
+    }
+
+    if (target.matches('.all-clear')) {
+        handleAllClear(target);
         updateDisplay();
     }
 
