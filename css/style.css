@@ -71,6 +71,10 @@ body{
     color: #fff;
 }
 
+.checkedOperator{
+    opacity: .65;
+}
+
 .btn-number, .decimal{
     background-color: #323232;
     color: #fff;
