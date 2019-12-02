@@ -29,10 +29,14 @@ const inputNumber = (number) => {
 
 
 const inputDecimal = (decimal) => {
-    const { displayValue } = calculator;
+    const { displayValue, secondOperandActive, operator } = calculator;
+
+    if (secondOperandActive && operator) return
+
     if (!displayValue.includes(decimal)) {
         calculator.displayValue += decimal;
     }
+    console.log(calculator);
 }
 
 const inputOperator = (nextOperator) => {
