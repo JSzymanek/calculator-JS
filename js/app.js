@@ -3,6 +3,7 @@ let calculator = {
     firstOperand: null,
     secondOperandActive: false,
     operator: null,
+    quant: 0,
 }
 
 const updateDisplay = () => {
@@ -83,6 +84,23 @@ const handleAllClear = (clear) => {
 
 }
 
+const handleClearItem = (val) => {
+    const { displayValue, quant } = calculator;
+    const length = displayValue.length;
+
+    if (displayValue.length > 1) {
+        const newDisplayValue = displayValue.substring(0, length - 1)
+
+        calculator.displayValue = newDisplayValue
+        updateDisplay()
+    }
+
+    if (displayValue.length == 1) {
+        calculator.displayValue = '0';
+    }
+
+}
+
 const inputValue = document.querySelector('.calculator');
 
 const handleButton = (e) => {
@@ -110,6 +128,10 @@ const handleButton = (e) => {
     if (target.matches('.all-clear')) {
         handleAllClear(target);
         updateDisplay();
+    }
+
+    if (target.matches('.clear-item')) {
+        handleClearItem(target.value)
     }
 
     updateDisplay();
